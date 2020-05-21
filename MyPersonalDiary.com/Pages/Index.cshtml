@@ -1,0 +1,31 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+</div>
+
+<div>Total notes in the diary @Model.DiaryNotes.Count()</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Summary</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.DiaryNotes)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Summary</td>
+                <td>@item.Details</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,44 @@
+﻿@page
+@model MyPersonalDiary.com.Pages.DiaryNotes.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create diary</h1>
+
+<h4>Add a new diary entry</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DiaryNoteVo.Title" class="control-label"></label>
+                <input asp-for="DiaryNoteVo.Title" class="form-control" />
+                <span asp-validation-for="DiaryNoteVo.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiaryNoteVo.Summary" class="control-label"></label>
+                <input asp-for="DiaryNoteVo.Summary" class="form-control" />
+                <span asp-validation-for="DiaryNoteVo.Summary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiaryNoteVo.Details" class="control-label"></label>
+                <input asp-for="DiaryNoteVo.Details" class="form-control" />
+                <span asp-validation-for="DiaryNoteVo.Details" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
