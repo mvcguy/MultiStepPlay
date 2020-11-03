@@ -15,7 +15,8 @@ namespace MyPersonalDiary.com.Domain.Services
                 Details = noteDac.Details,
                 Summary = noteDac.Summary,
                 Title = noteDac.NoteTitle,
-                ModifiedOn = noteDac.ModifiedOn
+                ModifiedOn = noteDac.ModifiedOn,
+                IsDraft = noteDac.IsDraft.GetValueOrDefault()
             };
         }
 
@@ -30,7 +31,8 @@ namespace MyPersonalDiary.com.Domain.Services
                 Details = noteVo.Details,
                 Summary = noteVo.Summary,
                 NoteTitle = noteVo.Title,
-                ModifiedOn = noteVo.ModifiedOn
+                ModifiedOn = noteVo.ModifiedOn,
+                IsDraft = noteVo.IsDraft
             };
         }
     }

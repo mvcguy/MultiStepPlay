@@ -44,12 +44,7 @@ namespace MyPersonalDiary.com.Pages.DiaryNotes
                 return NotFound();
             }
 
-            DiaryNoteVo = await DiaryService.GetNoteById(id);
-
-            if (DiaryNoteVo != null)
-            {
-                await DiaryService.DeleteNote(DiaryNoteVo);
-            }
+            await DiaryService.DeleteNote(DiaryNoteVo);
 
             return RedirectToPage("./Index");
         }

@@ -10,5 +10,7 @@ namespace MyPersonalDiary.com.Domain.Repository
         public string Summary { get; set; }
 
         public string Details { get; set; }
+
+        public bool? IsDraft { get; set; }
     }
 }

@@ -38,7 +38,9 @@ namespace MyPersonalDiary.com.Domain.Services
 
         public async Task DeleteNote(DiaryNoteVo noteVo)
         {
-            Repository.DeleteNote(noteVo.ToDiaryNoteDac());
+            var dac = await EnsureDocumentExist(noteVo);
+
+            Repository.DeleteNote(dac);
             await EnsurePersisted();
         }
 
@@ -55,8 +57,7 @@ namespace MyPersonalDiary.com.Domain.Services
 
         public async Task UpdateNote(DiaryNoteVo noteVo)
         {
-            var latest = await Repository.GetDiaryNoteById(noteVo.Id);
-            if (latest == null) throw new Exception($"Document with ID: {noteVo.Id} cannot be found");
+            DiaryNoteDac latest = await EnsureDocumentExist(noteVo);
 
             if (string.IsNullOrWhiteSpace(noteVo.Title)) throw new Exception("Document title cannot be null/empty");
             if (string.IsNullOrWhiteSpace(noteVo.Details)) throw new Exception("Document body cannot be null/empty");
@@ -71,5 +72,13 @@ namespace MyPersonalDiary.com.Domain.Services
             Repository.UpdateDiaryNote(latest);
             await EnsurePersisted();
         }
+
+        private async Task<DiaryNoteDac> EnsureDocumentExist(DiaryNoteVo noteVo)
+        {
+            var latest = await Repository.GetDiaryNoteById(noteVo.Id);
+            if (latest == null) throw new Exception($"Document with ID: {noteVo.Id} cannot be found");
+            return latest;
+        }
+
     }
 }

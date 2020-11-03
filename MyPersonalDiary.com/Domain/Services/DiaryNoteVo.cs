@@ -7,17 +7,15 @@ namespace MyPersonalDiary.com.Domain.Services
     public class DiaryNoteVo
     {
         public Guid? Id { get; set; }
-
-        [Required]
+                
         [StringLength(1000, MinimumLength = 3)]
         [DisplayName("Title")]
         public string Title { get; set; }
-                
+
         [StringLength(2500)]
         [DisplayName("Summary")]
         public string Summary { get; set; }
-
-        [Required]
+                
         [StringLength(int.MaxValue, MinimumLength = 3)]
         [DisplayName("Details")]
         public string Details { get; set; }
@@ -33,5 +31,7 @@ namespace MyPersonalDiary.com.Domain.Services
 
         [DisplayName("Edited by")]
         public string ModifiedBy { get; set; }
+
+        public bool IsDraft { get; set; }
     }
 }

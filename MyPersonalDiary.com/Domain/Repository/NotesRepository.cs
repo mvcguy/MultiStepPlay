@@ -24,7 +24,7 @@ namespace MyPersonalDiary.com.Domain.Repository
 
         public void DeleteNote(DiaryNoteDac note)
         {
-            DbContext.Remove(note);
+            DbContext.Attach(note).State = EntityState.Deleted;
         }
 
         public async Task<DiaryNoteDac> GetDiaryNoteById(Guid? id)
